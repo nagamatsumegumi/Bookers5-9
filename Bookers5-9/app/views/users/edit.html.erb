@@ -1,0 +1,12 @@
+<h1>User info</h1>
+
+<%= form_for(@user) do |f| %>
+　<%= render 'layouts/error_messages', model: f.object %>
+    <h5>Name</h5>
+    <%= f.text_field :name, class: "name" %>
+    <h5>Image</h5>
+    <%= f.attachment_field :profile_image, placeholder: "プロフィール画像", class: "user_image" %>
+    <h5>Introduction</h5>
+    <%= f.text_area :title %><br>
+    <%= f.submit 'Update User', class: "Introduction" %>
+<% end %>

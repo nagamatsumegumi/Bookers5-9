@@ -1,0 +1,37 @@
+<div class="container">
+     <div class="row">
+        <div class="col-sm-3 sidenav">
+
+
+<%= render 'books/newbook', user: @book.user, book: @newbook %>
+
+        </div>
+
+<div class="col-sm-8">
+
+<h2>Book detail</h2>
+
+<table class="table">
+
+    <td><%= attachment_image_tag @book.user, :profile_image,　format: 'jpeg', fallback: "no_image.jpg", size: "100x100" %><br>
+        <%= link_to @book.user.name, user_path(@book.user_id), class: "user_#{@book.user_id}" %></td>
+
+
+    <td><%= @book.title %></td>
+    <td><%= @book.opinion %></td>
+
+<% if user_signed_in? && current_user.id == @book.user_id %>
+
+    <td><%= link_to 'Edit', edit_book_path(@book.id), class: "edit_#{@book.id}", class: "btn btn-success btn-sm" %></td>
+    <td><%= link_to 'Destroy', book_path(@book.id), class: "destroy_#{@book.id}",
+                method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm" %></td>
+
+<% end %>
+
+</table>
+
+       </div>
+  </div>
+</div>
+
+</div>

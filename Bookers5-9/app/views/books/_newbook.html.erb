@@ -1,0 +1,49 @@
+
+<div class="container">
+  <div class="text-danger">
+
+<% if book.errors.any? %>
+    <%= book.errors.count %>error prohibited this obj form being saved:
+    <% book.errors.full_messages.each do |message| %>
+  <div class="form-error">
+ <%= message %>
+
+  </div>
+ <% end %>
+<% end %>
+  </div>
+
+     <div class="row">
+        <div class="col-sm-3 sidenav">
+<h2>User info</h2>
+
+<%= attachment_image_tag user, :profile_image,　format: 'jpeg', fallback: "no_image.jpg", size: "100x100" %>
+<h5><strong>name <%= user.name %></strong></h5>
+<h5><strong>introduction <%= user.title %></strong></h5>
+
+
+
+<% if current_user.id == user.id %>
+	<%= link_to "", edit_user_path(user), class: "edit_user_#{user.id} glyphicon glyphicon-wrench btn btn-default btn-block" %>
+<% else %>
+	<%= link_to '', user_path(current_user), class: "user_#{user.id} glyphicon glyphicon-wrench btn btn-default btn-block" %>
+<% end %>
+
+
+
+<h2>New book</h2>
+
+<%= form_for(book) do |f| %>
+    <h5><strong>Title</strong></h5>
+    <%= f.text_field :title, class: "book_title" %>
+
+    <h5><strong>Opinion</strong></h5>
+    <%= f.text_area :opinion, class: "book_body" %><br>
+
+    <%= f.submit 'Create Book', class: "btn btn-primary btn-block" %>
+
+<% end %>
+
+     </div>
+   </div>
+ </div>

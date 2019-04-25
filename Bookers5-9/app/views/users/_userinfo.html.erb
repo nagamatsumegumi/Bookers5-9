@@ -11,22 +11,30 @@
 </div>
 
      <div class="row">
-        <div class="col-sm-3 sidenav">
+        <div class="col-sm-3">
+
 <h2>User info</h2>
 
   <%= attachment_image_tag user, :profile_image,　format: 'jpeg', fallback: "no_image.jpg", size: "100x100" %>
-  <h5><strong>name <%= user.name %></strong></h5>
-  <h5><strong>introduction <%= user.title %></strong></h5>
-
-
-
+<table class="table">
+<tbody>
+  <tr></tr>
+  <tr>
+    <th>name</th>
+    <th><%= user.name %></th>
+  </tr>
+  <tr>
+    <th>introduction</th>
+    <th><%= user.title %></th>
+  </tr>
+</tbody>
+</table>
 
 <% if current_user.id == user.id %>
    <%= link_to "", edit_user_path(user), class: "edit_user_#{user.id} glyphicon glyphicon-wrench btn btn-default btn-block" %>
 <% else %>
    <%= link_to '', user_path(current_user), class: "user_#{user.id} glyphicon glyphicon-wrench btn btn-default btn-block" %>
 <% end %>
-
 
 
 <h2>New book</h2>
